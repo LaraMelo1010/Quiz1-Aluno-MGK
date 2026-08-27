@@ -9,14 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
-    <!-- Botão para iniciar o Quiz -->
-    <div class="start_btn">
-        <!--ADICIONAR BUTTON PARA INICIAR O QUIZ-->
     
-
+    <div class="start_btn">
+        <button class="Sbtn">Start the Quiz</button>
     </div>
 
-    <!-- Caixa de Informação -->
     <div class="info_box">
         <div class="info-title"><span>Algumas Regras deste Quiz:</span></div>
         <div class="info-list">
@@ -27,52 +24,48 @@
             <div class="info">5. Você receberá pontos com base nas suas respostas corretas.</div>
         </div>
         <div class="buttons">
-            <!-- ADICIONE BOTÕES PARA FECHAR E REINICIAR O QUIZ (USAR AS CLASSES "QUIT" E "RESTART") -->
-            
+           <button class="quit">Quit</button>
+           <button class="restart">Restart</button>
 
         </div>
     </div>
 
-    <!-- Caixa do Quiz -->
     <div class="quiz_box">
         <header>
-            <div class="title">Quiz</div> <!-- Título do Quiz -->
+            <div class="title">Quiz</div> 
             <div class="timer">
-                <div class="time_left_txt">Tempo Restante</div> <!-- Texto de tempo restante -->
-                <div class="timer_sec">15</div> <!-- Contador de segundos -->
+                <div class="time_left_txt">The time you have: </div> 
+                <div class="timer_sec">15</div>
             </div>
-            <div class="time_line"></div> <!-- Linha de tempo (para efeitos visuais) -->
+            <div class="time_line"></div>
         </header>
         <section>
             <div class="que_text">
-                <!-- Aqui será inserida a pergunta dinamicamente pelo JavaScript -->
+               
             </div>
             <div class="option_list">
-                <!-- Aqui serão inseridas as opções de resposta dinamicamente pelo JavaScript -->
-            </div>
+                
         </section>
 
-        <!-- Rodapé do Quiz -->
         <footer>
             <div class="total_que">
-                <!-- Aqui será mostrada a contagem de perguntas -->
+                
             </div>
-            <button class="next_btn">Próxima Questão</button> <!-- Botão para ir para a próxima questão -->
+            <button class="next_btn">Próxima Questão</button> 
         </footer>
     </div>
 
     <!-- Caixa de Resultados -->
     <div class="result_box">
         <div class="icon">
-            <i class="fas fa-crown"></i> <!-- Ícone de coroa para representar o resultado -->
+            <i class="fas fa-crown"></i> 
         </div>
-        <div class="complete_text">Você completou o Quiz!</div> <!-- Texto indicando que o Quiz foi completado -->
-        <div class="score_text">
-            <!-- Aqui será inserido o resultado do placar dinamicamente pelo JavaScript -->
+        <div class="complete_text">Você completou o Quiz!</div> 
+            
         </div>
         <div class="buttons">
-            <button class="restart">Reiniciar Quiz</button> <!-- Botão para reiniciar o Quiz -->
-            <button class="quit">Sair do Quiz</button> <!-- Botão para sair do Quiz -->
+            <button class="restart">Restart Quiz</button> 
+            <button class="quit">Quit Quiz</button> 
         </div>
     </div>
 
