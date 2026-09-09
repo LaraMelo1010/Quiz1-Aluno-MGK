@@ -10,6 +10,8 @@ const time_text = document.querySelector(".timer .time_left_txt");
 const time_count = document.querySelector(".timer .timer_sec");
 const restart_quiz = result_box.querySelector(".buttons .restart");
 const quit_quiz = result_box.querySelector(".buttons .quit");
+const next_btn = document.querySelector("footer .next_btn");
+const botton_ques_counter = document.querySelector("footer .total_q");
 
  let timeValue = 15;
  let que_number = 1;
@@ -48,9 +50,45 @@ const quit_quiz = result_box.querySelector(".buttons .quit");
     clearInterval(couterLine);
     startTimer(timeValue);
     startTimerLine(widthValue);
-    time_text.textContent = "Tempo restante: ";
+    time_text.textContent = "Your time: ";
     next_btn.classList.remove("show");
  }
  quit_quiz.onclick = () => {
     window.location.reload();
  }
+
+ next_btn.onclick = () => {
+    if(que_count < questions.length - 1) {
+        que_count++;
+        que_number++;
+        showQuestions(que_count);
+        que_count(que_number);
+        clearInterval(counter);
+        clearInterval(couterLine);
+        startTimer(timeValue);
+        startTimerLine(widthValue);
+        time_text.textContent = "Your time: ";
+        next_btn.classList.remove("show");
+    }
+    else{
+        clearInterval(counter);
+        clearInterval(couterLine);
+        showResult();
+    }
+ }
+ function showQuestions (index) {
+    const q_text = document.querySelector(".que_text");
+    let q_tag = '<span>' + questions[index].number + ", " + questions[index].question + '</span>';
+    let opcoes_tag = '<div class = "option"><span>' + questions[index].options[0] + '</span></div>' + 
+    '<div class = "option"><span>' + questions[index].options[1] + '</span></div>' + 
+    '<div class = "option"><span>' + questions[index].options[2] + '</span></div>' +
+    '<div class = "option"><span>' + questions[index].options[3] + '</span></div>';
+    q_text.innerHTML = q_tag;
+    option_list.innerHTML = opcoes_tag;
+
+    const option = option_list.querySelectorAll(".option");
+
+    for(i=0; i<option.length; i++){
+        option[i].setAttribute("onclick","optionSelected(this)")
+    }
+}
