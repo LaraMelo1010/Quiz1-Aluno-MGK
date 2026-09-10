@@ -91,4 +91,34 @@ const botton_ques_counter = document.querySelector("footer .total_q");
     for(i=0; i<option.length; i++){
         option[i].setAttribute("onclick","optionSelected(this)")
     }
-}
+ }
+ function optionSelected (answer) {
+   let userAns = answer.textContent;
+   let correctAns = questions[que_count].answer;
+   const allOptions = option_list.children.length;
+
+   if(userAns == correctAns) {
+      userScore += 1;
+      answer.classList.add("correct");
+      answer.insertAdjacentHTML("beforeend", tickIconTag);
+      console.log("correct answer");
+      console.log("your correct answers = " + userScore);
+   }
+   else{
+      answer.classList.add("incorrect");
+      answer.insertAdjacentHTML("beforeend", crossIconTag);
+      console.log("incorrect answer");
+      
+      for(i=0; i<allOptions; i++) {
+         if(option_list.children[i].textContent==correctAns){
+            option_list.children[i].setAttribute("class", "optionCorrect");
+            option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag);
+            console.log("correct answer selected");
+         }
+      }
+   }
+   for(i=0; i<allOptions; i++){
+      option_list.children[i].classList.add("disabled");
+   }
+   next_btn.classList.add("show");
+ }
