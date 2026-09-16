@@ -36,6 +36,7 @@ const botton_ques_counter = document.querySelector("footer .total_q");
     startTimer(15);
     startTimerLine(0);
  }
+
  restart_quiz.onclick = () => {
     quiz_box.classList.add("activeQuiz");
     result_box.classList.remove("activeResult");
