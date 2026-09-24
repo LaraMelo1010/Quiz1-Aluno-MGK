@@ -8,10 +8,6 @@ const option_list = document.querySelector(".option_list");
 const time_line = document.querySelector("header .time_line");
 const time_text = document.querySelector(".timer .time_left_txt");
 const time_count = document.querySelector(".timer .timer_sec");
-const restart_quiz = result_box.querySelector(".buttons .restart");
-const quit_quiz = result_box.querySelector(".buttons .quit");
-const next_btn = document.querySelector("footer .next_btn");
-const botton_ques_counter = document.querySelector("footer .total_q");
 
  let timeValue = 15;
  let que_number = 1;
@@ -20,6 +16,8 @@ const botton_ques_counter = document.querySelector("footer .total_q");
  let widthValue = 0;
  let counter;
  let couterLine;
+ const tickIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
+ const crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
  start_btn.onclick =  () => {
     info_box.classList.add("activeInfo");
@@ -36,6 +34,9 @@ const botton_ques_counter = document.querySelector("footer .total_q");
     startTimer(15);
     startTimerLine(0);
  }
+
+ const restart_quiz = result_box.querySelector(".buttons .restart");
+const quit_quiz = result_box.querySelector(".buttons .quit");
 
  restart_quiz.onclick = () => {
     quiz_box.classList.add("activeQuiz");
@@ -58,12 +59,15 @@ const botton_ques_counter = document.querySelector("footer .total_q");
     window.location.reload();
  }
 
+ const next_btn = document.querySelector("footer .next_btn");
+ const botton_ques_counter = document.querySelector("footer .total_q");
+
  next_btn.onclick = () => {
     if(que_count < questions.length - 1) {
         que_count++;
         que_number++;
         showQuestions(que_count);
-        que_count(que_number);
+        queCounter(que_number);
         clearInterval(counter);
         clearInterval(couterLine);
         startTimer(timeValue);
@@ -94,9 +98,6 @@ const botton_ques_counter = document.querySelector("footer .total_q");
     }
  }
 
- let tickIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
- let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
-
  function optionSelected (answer) {
    clearInterval(counter);
    clearInterval(couterLine);
@@ -116,7 +117,7 @@ const botton_ques_counter = document.querySelector("footer .total_q");
       answer.insertAdjacentHTML("beforeend", crossIconTag);
       console.log("incorrect answer");
       
-      for(i=0; i<allOptions; i++) {
+      for(let i=0; i<allOptions; i++) {
          if(option_list.children[i].textContent==correctAns){
             option_list.children[i].setAttribute("class", "optionCorrect");
             option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag);
@@ -131,7 +132,7 @@ const botton_ques_counter = document.querySelector("footer .total_q");
  }
  function showResult () {
    info_box.classList.remove("activeInfo");
-   quiz_box.classList.remove("äctiveQuiz");
+   quiz_box.classList.remove("activeQuiz");
    result_box.classList.add("activeResult");
    const scoreText = result_box.querySelector(".score_text");
    if (userScore > 4) {
@@ -147,7 +148,7 @@ const botton_ques_counter = document.querySelector("footer .total_q");
       scoreText.innerHTML = scoreTag;
    }
  }
- function startTime (time) {
+ function startTimer (time) {
    counter = setInterval(timer, 1000);
    function timer () {
       time_count.textContent = time;
@@ -175,8 +176,9 @@ const botton_ques_counter = document.querySelector("footer .total_q");
       }
    }
  }
- function startTimeLine () {
+ function startTimerLine () {
    couterLine = setInterval(timer,29);
+   let time = 0;
    function timer () {
       time += 1;
       time_line.style.width = time + "px";
