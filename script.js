@@ -60,7 +60,7 @@ const quit_quiz = result_box.querySelector(".buttons .quit");
  }
 
  const next_btn = document.querySelector("footer .next_btn");
- const botton_ques_counter = document.querySelector("footer .total_q");
+ const botton_ques_counter = document.querySelector("footer .total_que");
 
  next_btn.onclick = () => {
     if(que_count < questions.length - 1) {
@@ -93,7 +93,7 @@ const quit_quiz = result_box.querySelector(".buttons .quit");
 
     const option = option_list.querySelectorAll(".option");
 
-    for(i=0; i<option.length; i++){
+    for(let i=0; i<option.length; i++){
         option[i].setAttribute("onclick","optionSelected(this)")
     }
  }
@@ -125,7 +125,7 @@ const quit_quiz = result_box.querySelector(".buttons .quit");
          }
       }
    }
-   for(i=0; i<allOptions; i++){
+   for(let i=0; i<allOptions; i++){
       option_list.children[i].classList.add("disabled");
    }
    next_btn.classList.add("show");
@@ -162,14 +162,14 @@ const quit_quiz = result_box.querySelector(".buttons .quit");
          time_text.textContent = "You dont have more time";
          const allOptions = option_list.children.length;
          let correctAns = questions[que_count].answer;
-         for(i = 0; i < allOptions; i++) {
+         for(let i = 0; i < allOptions; i++) {
             if(option_list.children[i].textContent==correctAns){
             option_list.children[i].setAttribute("class", "optionCorrect");
             option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag);
             console.log("correct answer selected");
             }
          }
-         for(i = 0; i < allOptions; i++) {
+         for(let i = 0; i < allOptions; i++) {
             option_list.children[i].classList.add("disabled");
          }
          next_btn.classList.add("show");
